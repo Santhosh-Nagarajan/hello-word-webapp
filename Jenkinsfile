@@ -1,6 +1,10 @@
 pipeline {  
-    agent any  
-    stages {  
+    agent any
+    tools {
+       maven 'maven'
+       jdk 'JDK'
+        
+        stages {  
             stage ('Git-Checkout') {  
                 steps{
                     git credentialsId: 'Santhosh-Nagarajan/******(git credential)', url: 'https://github.com/Santhosh-Nagarajan/hello-word-webapp.git'
@@ -16,15 +20,15 @@ pipeline {
             }
             stage ('Build') {  
                   steps{
-                    bat label: '', script: 'mvn clean'
-                    bat label: '', script: 'mvn package'
+                    bat 'mvn clean'
+                    bat 'mvn package'
                     echo "build successful";
                     
                 } 
             }
              stage ('Test') {  
                   steps{
-                    bat label: '', script: 'mvn test'
+                    bat 'mvn test'
                     echo "test successful";
                 } 
             }
