@@ -44,5 +44,6 @@ pipeline {
              echo "Now you can monitor!";
            }
         }
-    }
-
+     }
+   }
+}
