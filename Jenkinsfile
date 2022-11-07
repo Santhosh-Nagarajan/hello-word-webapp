@@ -1,8 +1,8 @@
 pipeline {  
     agent any
     tools {
-       maven 'maven'
-       jdk 'JDK'
+       maven 'Maven'
+       jdk 'JAVA'
         
         stages {  
             stage ('Git-Checkout') {  
@@ -13,29 +13,29 @@ pipeline {
             }
             stage ('Compile') {  
                   steps{
-                    bat label: '', script: 'mvn compile'
+                    sh label: '', script: 'mvn compile'
                     echo "test successful";
                     
                 } 
             }
             stage ('Build') {  
                   steps{
-                    bat 'mvn clean'
-                    bat 'mvn package'
+                    sh 'mvn clean'
+                    sh 'mvn package'
                     echo "build successful";
                     
                 } 
             }
              stage ('Test') {  
                   steps{
-                    bat 'mvn test'
+                    sh 'mvn test'
                     echo "test successful";
                 } 
             }
             
         stage ('Deploy') {
             steps{
-            deploy adapters: [tomcat9(path: '', url: 'http://localhost:8090/')], contextPath: '/pipeline', onFailure: false, war: 'webapp/target/*.war' 
+            deploy adapters: [tomcat9(path: '', url: 'http://localhost:8082/')], contextPath: '/pipeline', onFailure: false, war: 'webapp/target/*.war' 
              echo "Deploy successful";
             }
         }
