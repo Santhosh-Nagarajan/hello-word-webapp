@@ -35,7 +35,7 @@ pipeline {
             
         stage ('Deploy') {
             steps{
-            deploy adapters: [tomcat10(path: '', url: 'http://localhost:8090/')],onFailure: false, war: '**/*.war'
+            deploy adapters: [tomcat9(path: '', url: 'http://localhost:8090/')], contextPath: '/pipeline', onFailure: false, war: 'webapp/target/*.war' 
              echo "Deploy successful";
             }
         }
