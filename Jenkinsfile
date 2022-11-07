@@ -31,7 +31,7 @@ pipeline {
             
         stage ('Deploy') {
             steps{
-            deploy adapters: [tomcat10(path: '', url: 'http://localhost:8090/')], Choose File: 'C:\ProgramData\Jenkins\.jenkins\workspace\hello-war-project\target\mvn-hello-world.war', onFailure: false, war: '**/*.war'
+            deploy adapters: [tomcat10(path: '', url: 'http://localhost:8090/')],onFailure: false, war: '**/*.war'
              echo "Deploy successful";
             }
         }
