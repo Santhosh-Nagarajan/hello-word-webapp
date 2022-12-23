@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
        maven 'Maven'
-       jdk 'JAVA'
+    }
         
         stages {  
             stage ('Git-Checkout') {  
@@ -35,7 +35,7 @@ pipeline {
             
         stage ('Deploy') {
             steps{
-            deploy adapters: [tomcat9(path: '', url: 'http://localhost:8082/')], contextPath: '/pipeline', onFailure: false, war: 'webapp/target/*.war' 
+            deploy adapters: [tomcat9(credentialsId: 'creds', path: '', url: 'http://localhost:9090/')], contextPath: 'java-maven-pipeline-tomcat', war: '**/*.war'
              echo "Deploy successful";
             }
         }
@@ -46,4 +46,3 @@ pipeline {
         }
      }
    }
-}
