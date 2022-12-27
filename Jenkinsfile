@@ -1,4 +1,4 @@
-<!-- pipeline {  
+/* pipeline {  
     agent any
     tools {
        maven 'Maven'
@@ -45,7 +45,7 @@
            }
         }
      }
-   } -->
+   } */
     
     pipeline {  
     agent any
