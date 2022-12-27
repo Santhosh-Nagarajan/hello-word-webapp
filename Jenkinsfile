@@ -83,7 +83,7 @@
             
         stage ('Deploy') {
             steps{
-            deploy adapters: [tomcat9(credentialsId: 'creds', path: '', url: 'http://localhost:9090/')], contextPath: 'java-maven-pipeline-tomcat',war: '**/mvn-hello-world.war' 
+            deploy adapters: [tomcat9(credentialsId: 'creds', path: '', url: 'http://localhost:9090/')], contextPath: 'java-maven-pipeline-tomcat',war: 'mvn-hello-world.war' 
              echo "Deploy successful";
             }
         }
